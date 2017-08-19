@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MainCollectionViewDataSource.init(parent : ViewController) -&gt; MainCollectionViewDataSource:MainCollectionViewDataSource.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.collectionView(UICollectionView, layout : UICollectionViewLayout, sizeForItemAt : IndexPath) -&gt; CGSize:ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UpperEightPresenter.onReload(NSNotification) -&gt; ():UpperEightPresenter.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.collectionView(UICollectionView, numberOfItemsInSection : Int) -&gt; Int:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "upperEightPresenter.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainCollectionViewLayout.layoutAttributesForItem(at : IndexPath) -&gt; UICollectionViewLayoutAttributes?:MainCollectionViewLayout.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FromAPIProductRepository.(callSession(with : Range&lt;Int&gt;, completion : (NSArray?, Error?) -&gt; ()) -&gt; ()).(closure #1):FromAPIProductRepository.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UIImageView.(imageURL.setter).(closure #1):UIImageViewWebLoadingExtension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIImage(data: data)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProductsViewTests.(databaseInitialized(Notification) -&gt; ()).(closure #1):ProductsViewTests.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UpperEightPresenter.calculateRects(in : CGRect) -&gt; [CGSize]:UpperEightPresenter.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ProductInteractor.save(of : Int) -&gt; ():ProductInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ProductsViewTests.databaseInitialized(Notification) -&gt; ():ProductsViewTests.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FromAPIProductRepository.(objects(for : Range&lt;Int&gt;, completion : ([ProductEntity]?, Error?) -&gt; ()) -&gt; ()).(closure #1):FromAPIProductRepository.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FromDatabaseProductRepository.write(object : ProductEntity, completion : (Error?) -&gt; ()) -&gt; ():FromDatabaseProductRepository.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "managedObjectContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainPresenter.onReload(NSNotification) -&gt; ():MainPresenter.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
