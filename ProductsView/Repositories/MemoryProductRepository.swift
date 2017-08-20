@@ -12,7 +12,7 @@ import UIKit
 class MemoryProductRepository: BaseWritableProductRepository {
     override func objects(for range: Range<Int>, completion: @escaping ([ProductEntity]?, Error?) -> ()) {
         var productsToReturn : [ProductEntity] = []
-        for i in range.lowerBound...range.upperBound {
+        for i in range.lowerBound..<range.upperBound {
             object(by: i) { object, _ in
                 if let obj = object { productsToReturn.append(obj) }
             }

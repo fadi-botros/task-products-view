@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, MainPresenterDelegate {
+class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, MainPresenterDelegate {
     unowned let parent: ViewController
     
     var presenter: MainPresenter
@@ -41,6 +41,17 @@ class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource, MainPr
             (cell.viewWithTag(1) as? UIActivityIndicatorView)?.startAnimating()
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        // If you are not in the last one (activity view), you can select
+        return indexPath.row < presenter.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = parent.storyboard?.instantiateViewController(withIdentifier: "productDetails") as? DetailViewController
+        viewController?.product = presenter.productData(for: indexPath.row)
+        parent.show(viewController!, sender: self)
     }
     
     func mainPresenter(_ mainPresenter: MainPresenter, reloaded range: Range<Int>) {

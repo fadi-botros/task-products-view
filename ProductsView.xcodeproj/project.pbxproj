@@ -39,6 +39,8 @@
 		044713C31F48BE0300E40258 /* MainCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044713C21F48BE0300E40258 /* MainCollectionViewLayout.swift */; };
 		044713C51F48BE8100E40258 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044713C41F48BE8100E40258 /* MainCollectionViewCell.swift */; };
 		044713C71F48BFEF00E40258 /* MainCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044713C61F48BFEF00E40258 /* MainCollectionViewDataSource.swift */; };
+		048FC76B1F49015800FDB219 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FC76A1F49015800FDB219 /* DetailViewController.swift */; };
+		048FC7701F49023700FDB219 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048FC76F1F49023700FDB219 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,9 @@
 		044713C21F48BE0300E40258 /* MainCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewLayout.swift; sourceTree = "<group>"; };
 		044713C41F48BE8100E40258 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		044713C61F48BFEF00E40258 /* MainCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		048FC76A1F49015800FDB219 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		048FC76D1F4901E300FDB219 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		048FC76F1F49023700FDB219 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048FC7701F49023700FDB219 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +137,7 @@
 				044713321F472B2F00E40258 /* ProductsViewTests */,
 				0447133D1F472B3000E40258 /* ProductsViewUITests */,
 				0447131C1F472B2D00E40258 /* Products */,
+				048FC76C1F4901E300FDB219 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +163,7 @@
 				0447134C1F47441E00E40258 /* Entities */,
 				0447131E1F472B2D00E40258 /* AppDelegate.swift */,
 				044713201F472B2D00E40258 /* ViewController.swift */,
+				048FC76A1F49015800FDB219 /* DetailViewController.swift */,
 				044713221F472B2D00E40258 /* Main.storyboard */,
 				044713251F472B2E00E40258 /* Assets.xcassets */,
 				044713271F472B2E00E40258 /* LaunchScreen.storyboard */,
@@ -278,6 +286,15 @@
 				044713C01F48B0F000E40258 /* MainPresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		048FC76C1F4901E300FDB219 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				048FC76F1F49023700FDB219 /* Social.framework */,
+				048FC76D1F4901E300FDB219 /* Twitter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +458,7 @@
 				044713BF1F48878B00E40258 /* UpperEightPresenter.swift in Sources */,
 				0447136A1F47B2AE00E40258 /* FromDatabaseProductRepository.swift in Sources */,
 				0447135A1F47667500E40258 /* ProductDataInMemory.swift in Sources */,
+				048FC76B1F49015800FDB219 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +707,7 @@
 				044713451F472B3000E40258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		044713461F472B3000E40258 /* Build configuration list for PBXNativeTarget "ProductsViewTests" */ = {
 			isa = XCConfigurationList;
@@ -697,6 +716,7 @@
 				044713481F472B3000E40258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		044713491F472B3000E40258 /* Build configuration list for PBXNativeTarget "ProductsViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -705,6 +725,7 @@
 				0447134B1F472B3000E40258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

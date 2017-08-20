@@ -48,7 +48,18 @@
          contextName = "ProductInteractor.save(of : Int) -&gt; ():ProductInteractor.swift">
       </ContextState>
       <ContextState
+         contextName = "MainPresenter.calculateRects(in : CGRect) -&gt; [CGRect]:MainPresenter.swift">
+      </ContextState>
+      <ContextState
          contextName = "ProductsViewTests.databaseInitialized(Notification) -&gt; ():ProductsViewTests.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FromDatabaseProductRepository.(objects(for : Range&lt;Int&gt;, completion : ([ProductEntity]?, Error?) -&gt; ()) -&gt; ()).(closure #1):FromDatabaseProductRepository.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "range">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "FromAPIProductRepository.(objects(for : Range&lt;Int&gt;, completion : ([ProductEntity]?, Error?) -&gt; ()) -&gt; ()).(closure #1):FromAPIProductRepository.swift">

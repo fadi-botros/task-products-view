@@ -40,6 +40,10 @@ class UpperEightPresenter: NSObject {
         return (ProductInteractor.shared[index]?.image as? ImageEntity)?.url
     }
     
+    func object(for index: Int) -> ProductEntity? {
+        return ProductInteractor.shared[index]
+    }
+    
     /// Calculates rects according to bounds, so that we ensure 4 and part of the fifth is displayed
     ///
     /// - Parameter bounds: The bounds to put the rects in
@@ -87,7 +91,7 @@ class UpperEightPresenter: NSObject {
     func onReload(_ notification: NSNotification) {
         if let page = notification.object as? Range<Int> {
             // First page is 0 - 7
-            if page.overlaps(Range<Int>.init(uncheckedBounds: (0, 7))) {
+            if page.overlaps(0...7) {
                 delegate?.upperEightPresenterReload(self)
             }
         }

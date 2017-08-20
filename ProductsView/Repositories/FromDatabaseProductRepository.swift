@@ -40,7 +40,7 @@ class FromDatabaseProductRepository: BaseWritableProductRepository {
     
     override func objects(for range: Range<Int>, completion: @escaping ([ProductEntity]?, Error?) -> ()) {
         callDatabaseFunction(predicate:
-        NSPredicate(format: "web_id >= %@ && web_id <= %@", range.lowerBound as NSNumber, range.upperBound as NSNumber)) {
+        NSPredicate(format: "web_id >= %@ && web_id < %@", range.lowerBound as NSNumber, range.upperBound as NSNumber)) {
             data, error in
             if let array = data as? [ProductManagedObject] {
                 completion(array.map({ProductPersistence.object(fromManagedObject: $0)}), nil)

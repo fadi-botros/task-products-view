@@ -82,6 +82,8 @@ class ProductInteractor {
         if let memEnt = self.object(fromMemoryRepository: entity.id) {
             // The saved one have priority over loaded now one
             if !(memEnt.saved == true && entity.saved == false) {
+                print(memEnt.saved)
+                print(entity.saved)
                 memEnt.copyData(from: entity)
             }
         } else {
@@ -108,10 +110,14 @@ class ProductInteractor {
         return object(fromMemoryRepository: index)
     }
     
+    var fromDatabase: [ProductEntity] = []
+    
     func readNewPage() {
         
         // Don't try to load while loading
         guard !loading else { return }
+        
+        fromDatabase = []
         
         loading = true
         
@@ -122,15 +128,19 @@ class ProductInteractor {
         
         let range = Range<Int>.init(
             uncheckedBounds: ((currentPage * pageCount), ((currentPage + 1) * pageCount)))
+        print(range)
         // From the database, just read and wait the webservice, then notify that it is updated ONLY
         //    IF IT WAS LOADED BEFORE FROM THE WEB
         repositories[1].objects(for: range, completion: {data, err in
             guard let array = data else { return }
             var ids: [Int] = []
-            array.forEach({self.putObjectOrChangeState(entity: $0); ids.append($0.id)})
+            
             if !self.loading {
+                array.forEach({self.putObjectOrChangeState(entity: $0); ids.append($0.id)})
                 NotificationCenter.default.post(name: ProductInteractor.dataUpdatedFromDatabase,
                                                 object: ids)
+            } else {
+                self.fromDatabase = array
             }
         })
         // From the API, when complete, notify
@@ -144,6 +154,8 @@ class ProductInteractor {
             }
             guard let array = data else { return }
             array.forEach({self.putObjectOrChangeState(entity: $0)})
+            self.fromDatabase.forEach({self.putObjectOrChangeState(entity: $0)})
+            self.fromDatabase = []
             self._currentPage += 1
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: ProductInteractor.pageLoadedNotification,

@@ -64,7 +64,7 @@ class FromAPIProductRepository: BaseProductRepository {
     }
     
     override func object(by id: Int, completion: @escaping (ProductEntity?, Error?) -> ()) {
-        callSession(with: Range(uncheckedBounds: (id, id)), completion: {json, error in
+        callSession(with: id..<id, completion: {json, error in
             guard let first = (json as? NSArray ?? []).firstObject else { completion(nil, error); return }
             completion(ProductSerialization.product(from: first), nil)
         })

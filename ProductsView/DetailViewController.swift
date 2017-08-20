@@ -1,14 +1,15 @@
 //
-//  MainCollectionViewCell.swift
+//  DetailViewController.swift
 //  ProductsView
 //
-//  Created by mac on 8/19/17.
+//  Created by mac on 8/20/17.
 //  Copyright © 2017 experiments. All rights reserved.
 //
 
 import UIKit
+import Social
 
-class MainCollectionViewCell: UICollectionViewCell {
+class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: AutoLayoutImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
@@ -30,12 +31,8 @@ class MainCollectionViewCell: UICollectionViewCell {
         product?.removeObserver(self, forKeyPath: #keyPath(ProductEntity.saved))
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        updateView()
-    }
-    
     func updateView() {
+        guard isViewLoaded else { return }
         let imgData = product?.image as? ImageEntity
         imageView.aspectRatio = CGFloat(imgData?.height ?? 1) / CGFloat(imgData?.width ?? 1)
         imageView.imageURL = imgData?.url
@@ -45,6 +42,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     func updateSaved() {
+        guard isViewLoaded else { return }
         if product?.saved == true {
             saveButton.isEnabled = false
         } else {
@@ -52,9 +50,6 @@ class MainCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBAction func onSave(_ sender: Any) {
-        ProductInteractor.shared.save(of: product!.id)
-    }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == &observeOnSaved {
@@ -66,4 +61,29 @@ class MainCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateView()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        ProductInteractor.shared.save(of: product!.id)
+    }
+    
+    @IBAction func tweetButton(_ sender: Any) {
+        if !SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            let alert = UIAlertController(title: "Error", message: "Twitter is not available", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if let viewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter) {
+                viewController.setInitialText(product?.productDescription)
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+    }
 }

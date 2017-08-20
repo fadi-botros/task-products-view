@@ -24,10 +24,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         
-        print(String.init(format: "%lu", Int64(1234)))
-        
         super.viewDidLoad()
         mainDataSource = MainCollectionViewDataSource(parent: self)
+        mainCollectionView.delegate = mainDataSource!
         mainCollectionView.dataSource = mainDataSource!
         upperEightCollectionView.delegate = self
         upperEightPresenter.delegate = self
@@ -37,6 +36,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // MARK: - Collection view Datasource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -56,7 +57,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return sizes[indexPath.row]
     }
+    
+    // MARK: - Collection view Delegate
 
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        // All are selectable here
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "productDetails") as? DetailViewController
+        viewController?.product =
+            upperEightPresenter.object(for: indexPath.row)
+        self.show(viewController!, sender: self)
+    }
+    
+    
     func upperEightPresenterReload(_ upperEightPresenter: UpperEightPresenter) {
         sizes = upperEightPresenter.calculateRects(in: upperEightCollectionView.bounds)
         DispatchQueue.main.async {
